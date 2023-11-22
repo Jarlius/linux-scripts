@@ -1,0 +1,8 @@
+SCRIPT_DIR=$(realpath $(dirname "$0"))
+. "$SCRIPT_DIR/../src/set-env.sh"
+
+prepare_args file
+check_args $@
+
+sed -zi 's/\r\n$//g' $1
+sed -zi 's/\n$//g' $1
