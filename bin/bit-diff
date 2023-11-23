@@ -1,0 +1,18 @@
+SCRIPT_DIR=$(realpath $(dirname "$0"))
+. "$SCRIPT_DIR/../src/set-env.sh"
+
+prepare_args file1 file2
+check_args $@
+
+FILE_ONE=$(cat $1 | base64)
+FILE_TWO=$(cat $2 | base64)
+
+echo $FILE_ONE
+echo $FILE_TWO
+
+if [ $FILE_ONE == $FILE_TWO ]
+then
+	echo "bits match"
+else
+	echo "no match"
+fi
